@@ -1,0 +1,35 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "CECECE",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center })
+  highlight2_cell = style.add_style(bg_color: "EFC376",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center })
+  basic = style.add_style(border: Axlsx::STYLE_THIN_BORDER)
+    
+  
+            wb.add_worksheet(name: "요약") do |sheet|
+             sheet.add_row [""]
+            sheet.add_row ["업종"]
+            for i in 0..11
+            @sec = Info.where(section: i)
+            sheet.add_row [""]
+             sheet.add_row ["구간 #{i}", "#{@sec.count}"]
+              @jigus.each do |sc|
+                @health = @sec.where("region1 like ?", "%#{sc.region1}%")
+                unless @health.count == 0
+                    @sms = sc.smalljs
+                    sheet.add_row ["#{sc.region1}", "#{@health.count}"]
+                    @sms.each do |j|
+                        @health2 = @health.where("region2 like ?", "%#{j.name}%")
+                        unless @health2.count == 0
+                            sheet.add_row ["#{sc.region1} #{j.name}" , "#{@health2.count}"]
+                        end
+                    end
+                  end
+                end
+                
+              end
+     end
+end

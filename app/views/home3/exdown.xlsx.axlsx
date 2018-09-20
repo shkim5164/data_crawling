@@ -1,0 +1,146 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "all") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @all.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event0") do |sheet|
+    sheet.add_row ["#{@all.count}개 업체 중 #{@.where(section: i).count}개"]
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event0.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event1") do |sheet|
+    sheet.add_row ["#{@health.count}개 업체 중 #{@health.where(section: i).count}개"]
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event1.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event2") do |sheet|
+    sheet.add_row ["name","event", "address", "phone", "section", "hit"]
+    @event2.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event3") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event3.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event4") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event4.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event5") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event5.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event6") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event6.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event7") do |sheet|
+    sheet.add_row ["name","event", "address", "phone", "section", "hit"]
+    @event7.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event8") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event8.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event9") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event9.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event10") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event10.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+wb.add_worksheet(name: "event11") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @event11.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end

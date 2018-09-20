@@ -1,0 +1,13 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "event6") do |sheet|
+    sheet.add_row ["name", "address", "phone", "section", "hit", "kinds"]
+    @event6.each do |product|
+    sheet.add_row [product.name,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit,
+                    product.kinds]
+    end
+end

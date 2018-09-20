@@ -1,0 +1,60 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "CECECE",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center })
+  highlight2_cell = style.add_style(bg_color: "EFC376",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center })
+  basic = style.add_style(border: Axlsx::STYLE_THIN_BORDER)
+    
+  
+            wb.add_worksheet(name: "요약") do |sheet|
+             sheet.add_row [""]
+            sheet.add_row ["업종2"]
+              @events.each do |sc|
+                @health = Info.where("event like ?", "%#{sc.name}%")
+                @events.each do |cc|
+                  @health2 = @health.where("event like ?", "%#{cc.name}%")
+                  unless @health2.count == 0
+                    sheet.add_row ["#{sc.name}#{cc.name}" , "#{@health2.count}"]
+                  end
+                end
+                
+              end
+              sheet.add_row ["업종3"]
+              @events.each do |sc|
+                @health = Info.where("event like ?", "%#{sc.name}%")
+                @events.each do |cc|
+                  @health2 = @health.where("event like ?", "%#{cc.name}%")
+                    @events.each do |cv|
+                      @health3 = @health2.where("event like ?", "%#{cv.name}%")
+                        unless @health3.count == 0
+                          sheet.add_row ["#{sc.name}#{cc.name}#{cv.name}" , "#{@health3.count}"]
+                        end
+                    end
+                end
+                
+              end
+              
+              sheet.add_row ["업종4"]
+              @events.each do |sc|
+                @health = Info.where("event like ?", "%#{sc.name}%")
+                @events.each do |cc|
+                  @health2 = @health.where("event like ?", "%#{cc.name}%")
+                    @events.each do |cv|
+                      @health3 = @health2.where("event like ?", "%#{cv.name}%")
+                        @events.each do |sv|
+                          @health4 = @health3.where("event like ?", "%#{sv.name}%")
+                            unless @health4.count == 0
+                              sheet.add_row ["#{sc.name}#{cc.name}#{cv.name}#{sv.name}" , "#{@health4.count}"]
+                            end
+                          end
+                        end
+                end
+                
+              end
+             
+              sheet.add_row ["전체" , "#{@allinfo.count}"]
+    end
+end

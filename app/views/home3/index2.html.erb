@@ -1,0 +1,16 @@
+<% @events.each do |e| %>
+    <% @gg.push(e.text) %>
+<% end %>
+
+<h1><%= @css.length %></h1>
+<%= @gg %>
+
+
+     <% @css.each do |m| %>
+       <% @sp_word = m['id'].split('_') %>
+     
+         <% @rt = @gg.join(",") %>
+         
+      <% end %>
+      
+<p> <%= @rt %></p>

@@ -1,0 +1,27 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "골프전체") do |sheet|
+    sheet.add_row ["전체 #{@allinfo.count}개 업체 중 #{@health.count}개"]
+    sheet.add_row ["업체이름", "업종","주소", "tlx제공 안심번호", "구간", "누적이용자수"]
+    @health.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+for i in 0..11
+    wb.add_worksheet(name: "골프 #{i} 구간") do |sheet|
+        sheet.add_row ["#{@health.count}개 업체 중 #{@health.where(section: i).count}개"]
+        sheet.add_row ["업체이름", "업종","주소", "tlx제공 안심번호", "구간", "누적이용자수"]
+        @health.where(section: i).each do |product|
+        sheet.add_row [product.name,
+                        product.event,
+                        product.address,
+                        product.phone,
+                        product.section,
+                        product.hit]
+        end
+    end
+end

@@ -1,0 +1,58 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  highlight_cell = style.add_style(bg_color: "CECECE",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center })
+  highlight2_cell = style.add_style(bg_color: "EFC376",
+                                   border: Axlsx::STYLE_THIN_BORDER,
+                                   alignment: { horizontal: :center })
+  basic = style.add_style(border: Axlsx::STYLE_THIN_BORDER)
+    
+    for i in 0..11
+        @health = @allinfo.where(section: i)
+        @nils = @health.where(region2: nil)
+        
+        
+        wb.add_worksheet(name: "구간 #{i} 업체") do |sheet|
+                sheet.add_row ["전체 4022개 업체 중 구간 #{i} 업체 #{@health.count}개"]
+                sheet.add_row ["업체이름" , "업종", "주소", "전화번호", "누적이용자수", "지역대분류", "지역소분류"], style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+                      @nils.each do |p|
+                                    
+                              sheet.add_row [p.name,
+                                            p.event,
+                                            p.address,
+                                            p.phone,
+                                            p.hit,
+                                            p.region1,
+                                            p.region2], style: [basic, basic, basic, basic, basic, basic, basic]
+                                    end 
+                                    
+                    @jigus.each do |jg|
+                        @smallj = jg.smalljs
+                        @smallj.each do |k|
+                                 
+                                @healthk = @health.where("region1 like ?", "%#{jg.region1}%")
+                                
+                                @health2 = @healthk.where("region2 like ?", "%#{k.name}%").order("name")
+                               
+                                unless @health2.count == 0
+                                    sheet.add_row [""]
+                                    sheet.add_row ["#{jg.region1} #{k.name} #{@health2.count}개"], style: [highlight2_cell]
+                                    sheet.add_row ["업체이름" , "업종", "주소", "전화번호", "누적이용자수", "지역대분류", "지역소분류"], style: [highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell, highlight_cell]
+                                    @health2.each do |p|
+                                    
+                                        sheet.add_row [p.name,
+                                            p.event,
+                                            p.address,
+                                            p.phone,
+                                            p.hit,
+                                            p.region1,
+                                            p.region2], style: [basic, basic, basic, basic, basic, basic, basic]
+                                    end 
+                                end
+                        end
+                    end
+                        
+        end
+    end
+end

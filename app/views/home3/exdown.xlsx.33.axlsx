@@ -1,0 +1,25 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "P.T전체") do |sheet|
+    sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+    @pt.each do |product|
+    sheet.add_row [product.name,
+                    product.event,
+                    product.address,
+                    product.phone,
+                    product.section,
+                    product.hit]
+    end
+end
+for i in 0..11
+    wb.add_worksheet(name: "P.T #{i} 구간") do |sheet|
+        sheet.add_row ["name", "event","address", "phone", "section", "hit"]
+        @pt.where(section: i).each do |product|
+        sheet.add_row [product.name,
+                        product.event,
+                        product.address,
+                        product.phone,
+                        product.section,
+                        product.hit]
+        end
+    end
+end
