@@ -61,7 +61,7 @@ class Home3Controller < ApplicationController
     @centers = Center.all
     
     @centers.each do |c|
-      @page = Nokogiri::HTML(open("https://tlx.co.kr/center/detail/#{c.code}"))
+      @page = Nokogiri::HTML(open(""))
       @sec_numb1 = @page.css("body > div.wrap > div.centerMasterHead > div.fcRecord > div > div.fcRecordLeft > div > b").text
       @sec_numb = @sec_numb1.gsub(/,(?=\d{3}\b)/, '').to_i
       
@@ -159,7 +159,7 @@ class Home3Controller < ApplicationController
     @centers = Center.where('id > 1555')
     
     @centers.each do |c|
-      @page = Nokogiri::HTML(open("https://tlx.co.kr/center/detail/#{c.code}"))
+      @page = Nokogiri::HTML(open(""))
       @sec_numb1 = @page.css("body > div.wrap > div.centerMasterHead > div.fcRecord > div > div.fcRecordLeft > div > b").text
       @sec_numb = @sec_numb1.gsub(/,(?=\d{3}\b)/, '').to_i
       
@@ -207,7 +207,7 @@ class Home3Controller < ApplicationController
     # @centers = Center.where('id > 2884')
     # @centers = Center.where('id > 3043')
     @centers.each do |c|
-      @page = Nokogiri::HTML(open("https://tlx.co.kr/center/detail/#{c.code}"))
+      @page = Nokogiri::HTML(open(""))
       @sec_numb1 = @page.css("body > div.wrap > div.centerMasterHead > div.fcRecord > div > div.fcRecordLeft > div > b").text
       @sec_numb = @sec_numb1.gsub(/,(?=\d{3}\b)/, '').to_i
       
@@ -252,7 +252,7 @@ class Home3Controller < ApplicationController
     @centers = Center.where('id > 3242')
     
     @centers.each do |c|
-      @page = Nokogiri::HTML(open("https://tlx.co.kr/center/detail/#{c.code}"))
+      @page = Nokogiri::HTML(open(""))
       @sec_numb1 = @page.css("body > div.wrap > div.centerMasterHead > div.fcRecord > div > div.fcRecordLeft > div > b").text
       @sec_numb = @sec_numb1.gsub(/,(?=\d{3}\b)/, '').to_i
       
@@ -410,7 +410,7 @@ class Home3Controller < ApplicationController
       respond_to do |format|
           format.html
           format.xlsx {
-            response.headers['Content-Disposition'] = "attachment; filename='tlx전체데이터.xlsx'"
+            response.headers['Content-Disposition'] = "attachment; filename='전체데이터.xlsx'"
           }
       end
   end
@@ -424,7 +424,7 @@ class Home3Controller < ApplicationController
       respond_to do |format|
           format.html
           format.xlsx {
-            response.headers['Content-Disposition'] = "attachment; filename='tlx요약.xlsx'"
+            response.headers['Content-Disposition'] = "attachment; filename='요약.xlsx'"
           }
       end
   end
@@ -437,7 +437,7 @@ class Home3Controller < ApplicationController
       respond_to do |format|
           format.html
           format.xlsx {
-            response.headers['Content-Disposition'] = "attachment; filename='tlx세부.xlsx'"
+            response.headers['Content-Disposition'] = "attachment; filename='세부.xlsx'"
           }
       end
   end
@@ -450,7 +450,7 @@ class Home3Controller < ApplicationController
       respond_to do |format|
           format.html
           format.xlsx {
-            response.headers['Content-Disposition'] = "attachment; filename='tlx세부.xlsx'"
+            response.headers['Content-Disposition'] = "attachment; filename='세부.xlsx'"
           }
       end
   end
